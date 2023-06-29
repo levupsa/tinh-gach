@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 50px;
+		}
+		input[type="number"] {
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: none;
+			background-color: #e6e6e6;
+			width: 200px;
+			text-align: center;
+            color:red; /* Thêm dòng này */
+            line-height:1.5; /* Thêm dòng này */
+		}
+		input[type="submit"] {
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+            background-color:white; /* Thêm dòng này */
+            color:black; /* Thêm dòng này */
+            font-weight:bold; /* Thêm dòng này */
+            box-shadow:none; /* Thêm dòng này */
+            border-color:black; /* Thêm dòng này */
+            margin-top:10px; /* Thêm dòng này */
+            margin-bottom:20px; /* Thêm dòng này */
+            width:auto; /* Thêm dòng này */
+            height:auto; /* Thêm dòng này */
+            text-align:center; /* Thêm dòng này */
+            font-size:16px; /* Thêm dòng này */
+            cursor:pointer; /* Thêm dòng này */
+            transition-duration:.3s; /* Thêm dòng này */
+		}
+        input[type="submit"]:hover {
+            background-color:red; /* Thêm dòng này */
+            color:white; /* Thêm dòng này */
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight:bold; 
+            color:red; /* Thêm dòng này */
+        }
+        label[for="a"]::before {
+            content:"Tùy chọn loại gạch:";
+            color:red; /* Thêm dòng này */
+        }
+        label[for="b"]::before {
+            content:"Diện tích dùng gạch dự kiến (mét vuông):";
+            color:red; /* Thêm dòng này */
+        }
+        select, label, input[type="number"], input[type="submit"]{
+          line-height:1.5; /* Thêm dòng này */
+        }
+	</style>
+</head>
+<body>
+<h1>TÍNH DỰ TRÙ SỐ LƯỢNG GẠCH</h1>
+<form onsubmit="return false;">
+<label for="a"></label>
+<select id="a" name="a">
+<option value="58">Gạch xây không trát</option>
+<option value="50">Gạch thất</option>
+<option value="9">Gạch lát 1</option>
+<option value="10">Gạch lát 2</option>
+<option value="11">Gạch lát 3</option>
+</select>
+<label for="b"></label>
+<input type="number" id="b" name="b" required><br><br>
+<input type="submit" value="BẮT ĐẦU TÍNH" onclick="calculate()">
+<div class='result' id='result'></div>
+<div class='result' id='result-value'></div>
+</form>
+
+<script>
+function calculate() {
+	var a = parseInt(document.getElementById("a").value);
+	var b = parseInt(document.getElementById("b").value);
+	var result = a * b;
+
+    document.getElementById('result').innerHTML = "Công trình của bạn cần ";
+    document.getElementById('result-value').innerHTML = result + " viên gạch";
+    document.getElementById('result-value').style.color = "red";
+    document.getElementById('result').style.color = "green";
+    document.getElementById('result').style.textAlign = "center";
+
+    var note = document.createElement("em");
+    note.style.color = "darkgreen";
+    note.appendChild(document.createTextNode("*Lưu ý: kết quả dự trù dựa trên thông số mạch là 1cm"));
+    document.body.appendChild(note);
+}
+</script>
+
+</body>
+</html>
